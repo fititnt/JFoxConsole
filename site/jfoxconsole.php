@@ -1,14 +1,12 @@
 <?php
 
 /**
- * @package		JFoxConsole
- * @author		Emerson Rocha Luiz (emerson@webdesign.eng.br)
- * @copyright           Copyright (C) 2005 - 2011 Webdesign Assessoria em Tecnologia da Informação LTDA.
- * @license		GNU General Public License version 2 or later;
+ * @package     JFoxConsole
+ * @author      Emerson Rocha Luiz - emerson at webdesign.eng.br - fititnt
+ * @copyright   Copyright (C) 2011 Webdesign Assessoria em Tecnologia da Informacao. All rights reserved.
+ * @license     GNU General Public License version 3. See license.txt
  */
-
-// No direct access to this file
-defined('_JEXEC') or die('Restricted access');
+defined('_JEXEC') or die;
 
 //Block non superadmins
 if (!JFactory::getUser()->authorise('core.admin', 'com_jfoxconsole'))
@@ -20,7 +18,7 @@ if (!JFactory::getUser()->authorise('core.admin', 'com_jfoxconsole'))
 // import joomla controller library
 jimport('joomla.application.component.controller');
 
-// Get an instance of the controller prefixed by HelloWorld
+// Get an instance of the controller
 $controller = JController::getInstance('JFoxConsole');
 
 // Perform the Request task

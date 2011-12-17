@@ -1,14 +1,12 @@
 <?php
+
 /**
- * @package		JFoxConsole
- * @author		Emerson Rocha Luiz (emerson@webdesign.eng.br)
- * @copyright           Copyright (C) 2005 - 2011 Webdesign Assessoria em Tecnologia da Informação LTDA.
- * @license		GNU General Public License version 2 or later;
+ * @package     JFoxConsole
+ * @author      Emerson Rocha Luiz - emerson at webdesign.eng.br - fititnt
+ * @copyright   Copyright (C) 2011 Webdesign Assessoria em Tecnologia da Informacao. All rights reserved.
+ * @license     GNU General Public License version 3. See license.txt
  */
-
-
-// No direct access to this file
-defined('_JEXEC') or die('Restricted access');
+defined('_JEXEC') or die;
 
 // import Joomla view library
 jimport('joomla.application.component.view');
@@ -16,20 +14,19 @@ jimport('joomla.application.component.view');
 /**
  * JFoxConsole View
  */
-class JFoxConsoleViewJFoxConsole extends JView
-{
-	
-	function display($tpl = null) 
-	{
+class JFoxConsoleViewJFoxConsole extends JView {
 
-            JToolBarHelper::title( JText::_('COM_JFOXCONSOLE_NAME'), 'generic.png');
-            JToolBarHelper::preferences( 'com_jfoxconsole', '270', '500' );
+    function display($tpl = null) {
+
+        JToolBarHelper::title(JText::_('COM_JFOXCONSOLE_NAME'), 'generic.png');
+        JToolBarHelper::preferences('com_jfoxconsole', '270', '500');
 
 
-            $code = $this->get('Runcode');
-            $this->result = $code;
+        $code = $this->get('Runcode');
+        $this->result = $code;
 
         //Return to display
         parent::display($tpl);
-        }
+    }
+
 }

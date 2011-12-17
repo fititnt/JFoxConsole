@@ -1,13 +1,12 @@
 <?php
-/**
- * @package		JFoxConsole
- * @author		Emerson Rocha Luiz (emerson@webdesign.eng.br)
- * @copyright           Copyright (C) 2005 - 2011 Webdesign Assessoria em Tecnologia da Informação LTDA.
- * @license		GNU General Public License version 2 or later;
- */
 
-// No direct access to this file
-defined('_JEXEC') or die('Restricted access');
+/**
+ * @package     JFoxConsole
+ * @author      Emerson Rocha Luiz - emerson at webdesign.eng.br - fititnt
+ * @copyright   Copyright (C) 2011 Webdesign Assessoria em Tecnologia da Informacao. All rights reserved.
+ * @license     GNU General Public License version 3. See license.txt
+ */
+defined('_JEXEC') or die;
 
 // import Joomla modelform library
 jimport('joomla.application.component.modeladmin');
@@ -16,16 +15,15 @@ jimport('joomla.application.component.modeladmin');
  * JFoxConsole Model
  */
 //class JFoxConsoleModelJFoxConsole extends JModelAdmin
-class JFoxConsoleModelJFoxConsole extends JModel
-{
+class JFoxConsoleModelJFoxConsole extends JModel {
 
-    public function getRuncode(){
+    public function getRuncode() {
 
         //Get params
-        $params = &JComponentHelper::getParams( 'com_jfoxconsole' );
+        $params = &JComponentHelper::getParams('com_jfoxconsole');
 
         //load post and put on variables
-        $jfoxcode = Jrequest::getVar('code', '', 'post','string', JREQUEST_ALLOWRAW );
+        $jfoxcode = Jrequest::getVar('code', '', 'post', 'string', JREQUEST_ALLOWRAW);
 
         $format = JRequest::getCmd('format', 'html');
 
@@ -34,14 +32,14 @@ class JFoxConsoleModelJFoxConsole extends JModel
 
         if ($cols == 0) {
             if ($format == 'html') {
-            $cols = $params->get('cols_html', 130);
-            $rows = $params->get('rows_html', 20);
+                $cols = $params->get('cols_html', 130);
+                $rows = $params->get('rows_html', 20);
             } else {
-            $cols = $params->get('cols_raw', 130);
-            $rows = $params->get('rows_raw', 3);
-           }
+                $cols = $params->get('cols_raw', 130);
+                $rows = $params->get('rows_raw', 3);
+            }
         }
-        
+
 
         //load $app for be able to take at least live_site
         $app = JFactory::GetApplication();
@@ -54,15 +52,15 @@ class JFoxConsoleModelJFoxConsole extends JModel
 
         // Way to abstract errors
         //todo: think a bit better who to do it to show another useful messages to user
-        $errormessage   = 'Parse error';
-        $pos = strpos($eval_result , $errormessage);
+        $errormessage = 'Parse error';
+        $pos = strpos($eval_result, $errormessage);
 
         if ($pos === false OR $params->get('filter_error') == 0) {
-			if ($eval_result != ''){
-					$jfoxconsoleoutput = $eval_result;
-			} else {
-					$jfoxconsoleoutput = JTEXT::_('COM_JFOXCONSOLE_NO_RESULT');
-			}
+            if ($eval_result != '') {
+                $jfoxconsoleoutput = $eval_result;
+            } else {
+                $jfoxconsoleoutput = JTEXT::_('COM_JFOXCONSOLE_NO_RESULT');
+            }
         } else {
             $jfoxconsoleoutput = JTEXT::_('COM_JFOXCONSOLE_RUNCODE_HAS_ERROR');
         }
@@ -73,7 +71,7 @@ class JFoxConsoleModelJFoxConsole extends JModel
         $result->jfoxcode = $jfoxcode;
         $result->cols = $cols;
         $result->rows = $rows;
-        
+
         return $result;
     }
 
